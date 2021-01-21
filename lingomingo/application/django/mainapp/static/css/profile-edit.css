@@ -1,0 +1,51 @@
+body{
+    background: #e0e0e0;
+    /*background: -webkit-linear-gradient(left, lightgray, lightgray);*/
+}
+.font{
+    font-family: "Font Awesome 5 Free";
+    color: black;
+    font-size: 32px;
+}
+
+.profile-edit-bold{
+    font-weight: bold;
+}
+
+.profile-edit-info{
+    padding: 3%;
+    margin-top: 3%;
+    background: white;
+
+}
+
+.profile-edit-gap{
+    margin: auto;
+}
+
+.profile-edit-remove-button{
+    background-color: lightgray;
+    border: none;
+
+}
+
+.profile-edit-bullet-point{
+    list-style-type: none;
+}
+
+.profile-edit-button{
+   border: none;
+    color: white;
+    cursor: pointer;
+
+    background-color: #4285F4;
+}
+
+.profile-edit-aboutMe{
+    background: white;
+}
+
+.profile-edit-center{
+    text-align:center;
+    display:inline-block;
+}

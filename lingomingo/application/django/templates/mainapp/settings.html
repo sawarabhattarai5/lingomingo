@@ -1,0 +1,169 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Settings{% endblock %}
+{% load static %}
+{% block content %}
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col-md-5 col-xl-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Account Settings</h5>
+                </div>
+                <!-- Left Hand Side Tab List-->
+                <div class="list-group list-group-flush" role="tablist">
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#notifications"
+                       role="tab">Notifications</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#privacy" role="tab">Privacy</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#security" role="tab">Security
+                        and Login</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#help"
+                       role="tab">Help</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#account" role="tab">Account</a>
+                </div><!--End of side tab-->
+            </div> <!-- Left Side Card -->
+        </div> <!-- Left Side Column -->
+        <!-- Ride Hand Side Tab-->
+        <div class="col-md-7 col-xl-8">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" role="tabpanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Find your account settings here.</p>
+                            <img src="{% static 'images/flamingo.jpg' %}" class="img-rounded"
+                                 style="width:100px;height:100px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="account" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header"><h5 class="card-title mb-0">Account Status</h5></div>
+                        <div class="card-body">
+                            <p>Taking a break from LingoMingo? You can deactivate your account here: </p>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                    data-target="#modalDeactivate">Deactivate Account
+                            </button>
+                            <!-- Modal -->
+                            <div id="modalDeactivate" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to deactivate your account? </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Yes, I am
+                                                sure.
+                                            </button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel
+                                            </button>
+                                        </div> <!-- Modal Footer -->
+                                    </div> <!-- Modal content -->
+                                </div> <!-- Modal Pop Up -->
+                            </div> <!-- Modal-->
+                            <br><br>
+                            <p>Mastered all languages? Delete your account here:</p>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                    data-target="#modalDelete">Delete Account
+                            </button>
+                            <div id="modalDelete" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete your account? </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Yes, I am
+                                                sure.
+                                            </button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel
+                                            </button>
+                                        </div> <!-- Modal Footer -->
+                                    </div> <!-- Modal content -->
+                                </div> <!-- Modal Pop Up -->
+                            </div> <!-- Modal-->
+                        </div> <!-- Card Body -->
+                    </div> <!-- Card -->
+                </div> <!-- Account Panel -->
+                <div class="tab-pane fade" id="privacy" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Privacy</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                                <label class="form-check-label" for="materialChecked2">Show location on profile.</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
+                                <label class="form-check-label" for="materialChecked2">Show last name on
+                                    profile.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="security" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Security and Login</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Notice any suspicious activity on your account? Please contact support email found in
+                                help tab in settings.</p>
+                            <p>If you need to change your password, see "Change Password" below.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Change Password</h5>
+                            <a href="{% url 'password_change' %}" class="btn btn-primary">Change Password</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="notifications" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Notifications</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Would you like to receive email notifications?</p>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio" checked> Receive emails about LingoMingo
+                                    updates and new features.</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio"> Receive emails about new matches.</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" disabled> Both </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="help" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Help</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Contact LingoMingo support for any questions or concerns you may have at
+                                support@lingomingo.app.</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- tab content -->
+        </div> <!-- column right -->
+    </div> <!-- row -->
+    </div> <!-- container for page -->
+
+{% endblock %}

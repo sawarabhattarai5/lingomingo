@@ -1,0 +1,174 @@
+{% extends 'mainapp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Profile{% endblock %}
+{% load static %}
+{% block content %}
+
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <div class="container emp-profile">
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <i class="fas fa-{{ profile.profile_icon }} fa-6x"></i>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h1 class="name"> {{ profile.user.username }}</h1>
+                        <p class="profile-rating">Tags :
+                            <button type="button" class="btn btn-sm btn-secondary" disabled>Easy to Understand</button>
+                            <button type="button" class="btn btn-sm btn-secondary" disabled>Friendly</button>
+                        </p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                   aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% if profile.uuid == user.profile.uuid %}
+                    <div class="col-md-2">
+                        <a href="{% url 'edit_profile' %}" class="btn btn-primary">
+                            Edit Profile
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-languages">
+                        <br>
+                        <div class="col-md-" style="font-size: 15pt; text-align: center">
+                            <label>I can teach:
+                                <br>
+                                <span style="font-size: 12pt">
+                                    {% for lang in profile.primary_language.all %}
+                                        {{ lang }}
+                                    {% endfor %}
+                                </span>
+                            </label>
+                        </div>
+                        <br>
+                        <div class="col-md-" style="font-size: 15pt; text-align: center">
+                            <label>I want to learn: <span style="font-size: 12pt;">
+                            <br>
+                                {% for lang in profile.learning_language.all %}
+                                    {{ lang }}
+                                {% endfor %}
+                            </span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-md-6" style="font-size: 15pt">
+                                    <label>Name: </label>
+                                </div>
+                                <div class="col-md-6" style="font-size: 15pt">
+                                    <p>{{ profile.user.first_name }} {{ profile.user.last_name }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" style="font-size: 15pt">
+                                    <label>Location: </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p style="font-size: 15pt">
+                                        {{ profile.get_location_full_name }}
+                                        <span class="flag-icon flag-icon-{{ profile.location }}"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" style="font-size: 15pt">
+                                    <label>About Me:</label>
+                                </div>
+                                <div class="col-md-6" style="font-size: 15pt">
+                                    <p>{{ profile.about_me }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container emp-profile overflow-auto">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-head">
+                    <h1>Posts</h1>
+                </div>
+                <div class="col-md-">
+                    {% if user == profile.user %}
+                        <h5>Add post
+                            <div id="cp" style="display:none">
+                                <form method="post" enctype="multipart/form-data" rows="3">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <button type="button" class="add" onclick=showdiv("cp")>+</button>
+                            <button type="button" onclick=allowEdit("desc")>edit mode</button>
+                        </h5>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-sm-8 left">
+                {% for post in post_list %}
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group shadow-textarea">
+                                <p class="profile-rating">
+                                    <button type="button" class="btn btn-sm btn-secondary" disabled>
+                                        {{ post.get_time }}
+                                    </button>
+                                </p>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <textarea name="edit_post" class="desc"
+                                              disabled="false"> {{ post.description }} </textarea>
+                                    {% if post.image %}
+                                        <img src="{{ post.image.url }}" class="img img-fluid">
+                                    {% endif %}
+                                    {% if user == profile.user %}
+                                        <button class="profile-edit-btn" type="submit" name="edit_post_id"
+                                                value={{ post.id }}>Edit
+                                        </button>
+                                    {% endif %}
+                                </form>
+                                <form method="post">
+                                    {% csrf_token %}
+
+                                    <button class="btn btn-primary" name="like_post" value="{{ post.id }}">
+                                        Like
+                                    </button>
+
+                                    {% if user == profile.user %}
+                                        <button class="btn btn-danger" type="submit" name="delete_post"
+                                                value={{ post.id }}>
+                                            Delete
+                                        </button>
+                                    {% endif %}
+                                </form>
+                                <div><i class="fas fa-heart" style="color:red"></i> {{ post.get_like_count }} </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-2 mb-5">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

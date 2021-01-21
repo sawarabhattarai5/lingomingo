@@ -1,0 +1,144 @@
+body{
+    background: whitesmoke;
+}
+
+a {
+    color: #3498db;
+}
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+
+    background: #fff;
+}
+
+.font {
+    font-family: "Font Awesome 5 Free";
+    color: #444444;
+}
+
+.profile_pic {
+    height: 112px;
+    width: 112px;
+    padding: 5px;
+    border: 2px solid #f39c12;
+    border-radius: 50%;
+
+}
+
+.card-header {
+    background-color: white;
+    padding: 20px !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 150px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-body {
+    background-color: white;
+    padding-top: 10px !important;
+    background-color: whitesmoke;
+    background-size: cover;
+}
+
+.card-footer {
+    padding: 0 !important;
+    background: #fff !important;
+    display: flex;
+    border-top: 0 !important;
+}
+
+.profile_pic img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+
+}
+
+.name_container {
+    display: flex;
+    justify-content: center;
+
+}
+
+.name {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+    color: #3875d7;
+    position: relative;
+}
+
+.name::after {
+    font-family: "Font Awesome 5 Free";
+    position: absolute;
+    right: -15px;
+    top: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #4CAF50;
+}
+
+.name1 {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+    color: #444444;
+    position: relative;
+}
+
+.name1::after {
+    font-family: "Font Awesome 5 Free";
+    position: absolute;
+    right: -15px;
+    top: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #4CAF50;
+}
+
+.info_container {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info p:first-child {
+    margin-bottom: 0;
+    font-size: 12px;
+    color: gray;
+    text-align: center;
+}
+
+.info p:last-child {
+    margin-bottom: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: gray;
+
+    text-align: center;
+}
+
+.address {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    color: gray;
+}
+
+.btn-group.special {
+    display: flex;
+}
+

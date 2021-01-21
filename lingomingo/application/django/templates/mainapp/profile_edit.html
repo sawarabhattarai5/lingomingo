@@ -1,0 +1,182 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock %}
+{% block content %}
+
+    <link href="{% static 'css/profile-edit.css' %}" rel="stylesheet" type="text/css">
+
+    {% if not user.profile.learning_language.all or not user.profile.primary_language.all %}
+        <!-- ======= Header ======= -->
+        <header id="header" class="fixed-top d-flex align-items-center">
+            <div class="container d-flex align-items-center">
+
+                <div class="logo mr-auto">
+                    <h1><a href="#">LingoMingo</a></h1>
+                </div>
+                {% if user.is_authenticated %}
+
+
+                {% else %}
+                    <nav class="nav-menu d-none d-lg-block">
+                        <ul>
+                            <li><a href="{% url 'register' %}">Register</a></li>
+                            <li><a href="{% url 'login' %}">Sign In</a></li>
+                        </ul>
+                    </nav><!-- .nav-menu -->
+                    </div>
+                {% endif %}
+        </header><!-- End Header -->
+    {% endif %}
+
+
+    {# this section is to load up countries and languages list for user selection #}
+    <datalist id="countries">
+        {% for c in country_list %}
+            <option value="{{ c.name }}"></option>
+        {% endfor %}
+    </datalist>
+
+    <datalist id="languages">
+        {% for lang in languages %}
+            <option value="{{ lang.name }}"></option>
+        {% endfor %}
+    </datalist>
+
+    {# this is user info section | first/last name, location and email updates here #}
+    <div class="container profile-edit-info">
+
+        <form action="" method="post" class="text-center">
+            {% csrf_token %}
+            <h2>Personal Info</h2>
+            <br/>
+            <i class="fas fa-{{ profile.profile_icon }} fa-4x"></i>
+            <br/>
+            <br/>
+
+            <div class="row profile-edit-center">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    {% for icon in icon_list %}
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="icon" autocomplete="off" value="{{ icon }}">
+                            <i class="fas fa-{{ icon }}"></i>
+                        </label>
+                    {% endfor %}
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <br/>
+            <br/>
+            <div class="row">
+                <label for="fname">First Name:</label>
+                <input type="text" class="form-control col-md-5 profile-edit-gap" id="fname" name="fname"
+                       value="{{ user.first_name }}">
+                <label for="lname">Last Name:</label>
+                <input type="text" class="form-control col-md-5 profile-edit-gap" id="lname" name="lname"
+                       value="{{ user.last_name }}">
+                <br/>
+            </div>
+            <div class="row">
+                <label>Location:</label>
+                <input list="countries" class="form-control col-md-5 profile-edit-gap" name="location"
+                       value="{{ user.profile.get_location_full_name }}" placeholder="Choose Location">
+                <br/>
+                <label>Email:</label>
+                <input type="email" class="form-control col-md-5 profile-edit-gap " name="email"
+                       value="{{ user.email }}"> <br/>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary profile-edit-button">Update</button>
+                </div>
+            </div>
+
+        </form>
+
+        <form action="" method="post" class="text-center">
+            {% csrf_token %}
+            <h3 class="mt-4">About Me</h3>
+            <textarea id="about_me" name="about_me" class="form-group form-control" cols="50"
+                      rows="4">{{ user.profile.about_me }}</textarea>
+            <button class="btn btn-primary profile-edit-button profile-edit-center">Save</button>
+        </form>
+
+        {# the half page div for user to see add/remove their prim/learning languages #}
+
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col">
+                    <h3>Languages You Know</h3>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <input list="languages" name="add_prime_lang" class="form-control"
+                                   placeholder="Ex: English">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary profile-edit-button">Add</button>
+                            </div>
+                        </div>
+                    </form>
+                    {% if user_prime_lang.count <= 1 %}
+                        {% for lang in user_prime_lang %}
+                            <li>
+                                {{ lang.name }}
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        {% for lang in user_prime_lang %}
+                            <li class="profile-edit-bullet-point">
+                                {{ lang.name }}
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <button name="remove_prime_lang" class="btn btn-light profile-edit-remove-button"
+                                            value="{{ lang.name }}">remove
+                                    </button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col">
+                    <h3>Learn A Language</h3>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <input list="languages" name="add_learn_lang" class="form-control"
+                                   placeholder="Ex: Spanish">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary profile-edit-button">Add</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    {% if user_learn_lang.count <= 1 %}
+                        {% for lang in user_learn_lang %}
+                            <li class="profile-edit-bullet-point">
+                                {{ lang.name }}
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        {% for lang in user_learn_lang %}
+                            <li class="profile-edit-bullet-point">
+                                {{ lang.name }}
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <button name="remove_learn_lang" class="btn btn-light profile-edit-remove-button"
+                                            value="{{ lang.name }}">remove
+                                    </button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        <br/>
+        <br/>
+    </div>
+{% endblock %}

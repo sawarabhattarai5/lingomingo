@@ -1,0 +1,123 @@
+body {
+    font-size: 15px;
+    line-height: 1.52;
+    color: #717f86;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.section-padding {
+    padding: 60px 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Open Sans, sans-serif;
+    font-weight: 700;
+    color: #4B4B4C;
+}
+
+a {
+    color: rgb(51, 71, 189);
+}
+
+a:hover, a:focus {
+    color: rgb(51, 71, 189);
+}
+
+b {
+    color: rgb(134, 2, 2);
+}
+
+c {
+    color: black;
+}
+
+.shadow {
+    box-shadow: 0px 0px 5px 0px;
+    padding-top: 10px;
+}
+
+
+/***********************************
+Banner
+************************************/
+.banner {
+
+    background-size: cover;
+    min-height: 580px;
+    position: relative;
+}
+
+.bg-color {
+    background-color: RGBA(12, 11, 11, 0.82);
+    min-height: 580px;
+}
+
+.text-dec {
+    font-size: 24px;
+    padding: 10px 20px;
+    margin: 15px 0;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.text-border {
+    border: 5px solid rgb(51, 71, 189);
+    display: inline-block;
+    margin-top: 150px;
+}
+
+.intro-para {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 45px;
+    color: #fff;
+    margin-top: 30px;
+}
+
+.big-text {
+    font-size: 35px;
+}
+
+.small-text {
+    font-size: 16px;
+}
+
+.signup .button {
+    position: relative;
+    background-color: rgb(51, 71, 189);
+    color: white;
+    font-size: 20px;
+    border-radius: 25px;
+}
+
+button.message {
+    background-color: rgb(51, 71, 189);
+    color: white;
+    border-radius: 25px;
+}
+
+button.btn.btn-primary.pull-right {
+    background-color: rgb(51, 71, 189);
+    color: white;
+    border-radius: 25px;
+}

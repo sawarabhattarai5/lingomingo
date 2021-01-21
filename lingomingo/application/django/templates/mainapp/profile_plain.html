@@ -1,0 +1,21 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+
+{% block content %}
+
+    <h1><span
+            class="flag-icon flag-icon-{{ profile.location }}"></span> {{ profile.user.first_name }} {{ profile.user.last_name }}
+    </h1>
+    <p>knows {% for lang in profile.primary_language.all %}<b>{{ lang }}</b> {% endfor %}</p>
+    <p>wants to learn {% for lang in profile.learning_language.all %}<b>{{ lang }}</b> {% endfor %}</p>
+    About Me:
+    <textarea class="form-control" cols="50" rows="4" readonly>{{ profile.about_me }}</textarea>
+    {% if user == profile.user %}
+        <a href="{% url 'edit_profile' %}">
+            <button class="btn btn-primary">Edit Your Profile</button>
+        </a>
+    {% endif %}
+
+{% endblock %}

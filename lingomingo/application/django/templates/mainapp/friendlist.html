@@ -1,0 +1,62 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Friends{% endblock %}
+
+{% load static %}
+{% block content %}
+    <script>
+        document.getElementById("nav-friends").className += " active";
+    </script>
+
+    {#    <link rel="stylesheet" type="text/css" href="css/imagehover.min.css">#}
+    {#    <link rel="stylesheet" type="text/css" href="{% static 'css/friends.css' %}">#}
+
+    <br/>
+    <br/>
+    {% for friend in friend_list %}
+
+        <div class="shadow">
+            <div class="col-sm-12">
+
+
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fas fa-{{ friend.profile_icon }} fa-2x"></i>
+                    </div>
+                    <div class="col-1">
+                        <h4><a href="{% url 'profile' friend.uuid %}">{{ friend.user.first_name }}</a></h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        Primary: {% for lang in friend.primary_language.all %}{{ lang }} {% endfor %}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Learning: {% for lang in friend.learning_language.all %}{{ lang }} {% endfor %}
+                    </div>
+                </div>
+                <div class="col-2 float-left">
+                    <br/>
+                    <a href="{% url 'room' friend.uuid %}">
+                        <button class="btn btn-primary">Message</button>
+                    </a>
+                </div>
+                <div class="col-2 float-right">
+                    <br/>
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-danger" name="unfriend" value="{{ friend.uuid }}">Remove Friend
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <hr/>
+        </div>
+    {% endfor %}
+
+{% endblock %}

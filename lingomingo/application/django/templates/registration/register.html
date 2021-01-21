@@ -1,0 +1,59 @@
+{% extends 'mainapp/base.html' %}
+{% block title %}Register{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <style type="text/css">
+        body {
+            background-color: #FFFFFF;
+        }
+
+        .registration-form {
+            width: 440px;
+            margin: 50px auto;
+            margin-top: 25px;
+            background-color: F8F8FF;
+        }
+
+        .registration-form form {
+            border: .5px solid;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            background: white;
+            box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        .registration-form h2 {
+            margin: 0 0 15px;
+        }
+
+        .form-control, .btn {
+            min-height: 38px;
+            border-radius: 6px;
+        }
+
+        .btn {
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        document.getElementById("nav-signup").className += " active";
+    </script>
+
+    <div class="registration-form">
+        <form method="post" class="form-group">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <p class="text-secondary"><small>By registering, you agree to our Terms & Conditions*</small></p>
+            <button type="submit" class="btn btn-success">Register</button>
+            <br/>
+            <br/>
+            <p class="text-center">Already have an Account?<a href="{% url 'login' %}"> Sign in</a></p>
+        </form>
+
+    </div>
+{% endblock %}

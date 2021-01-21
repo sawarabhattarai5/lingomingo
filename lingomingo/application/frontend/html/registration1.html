@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LingoMingo Registration Form</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<style type="text/css">
+  body{
+    background-color: #FFFFFF;
+  }
+	.registration-form {
+		width: 440px;
+    	margin: 50px auto;
+    margin-top: 150px;
+    background-color: F8F8FF;
+	}
+    .registration-form form {
+      border: .5px solid;
+      border-radius:5px;
+    	margin-bottom: 15px;
+        background: white;
+        box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .registration-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 6px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+    }
+  
+  p3{
+    font-size:18px;
+  }
+</style>
+    <script src="jquery.js"></script>
+
+ <script>
+    $(function(){
+      $("#includedContent").load("welcomeNavBar.html");
+    });
+    </script>
+</head>
+<body>
+<div id="includedContent"></div>
+<div class="registration-form">
+    <form action="../html/registrationComplete.html" method="post">
+        <h2 class="text-center">Registration</h2>
+
+    
+        
+        <p3>Select your location</p3>
+        <select name="choose" id="choose" class="input-select">
+        <option value="nul" selected disabled>Choose country</option>
+        <option value="opt1">USA</option>
+        <option value="opt2">London</option>
+        <option value="opt3">France</option>
+        <option value="opt4">Spain</option>
+        <option value="opt5">Nepal</option>
+        <option value="opt6">Mexico</option>
+        <option value="opt7">China</option>
+        </select> <br> <br>
+
+        <p3>Language you want to learn</p3>
+        <select name="choose" id="choose" class="input-select">
+        <option value="nul" selected disabled>Choose language</option>
+        <option value="opt1">Spanish</option>
+        <option value="opt2">English</option>
+        <option value="opt3">Chinese</option>
+        <option value="opt4">Nepali</option>
+        </select>
+
+                            
+        <select name="choose" id="choose" class="input-select">
+        <option value="nul" selected disabled>Skill level</option>
+        <option value="opt1">Advance</option>
+        <option value="opt2">Intermediate</option>
+        <option value="opt3">Beginner</option>
+        </select> <br> <br>
+                            
+        <p3>Language you want to teach</p3>
+        <select name="choose" id="choose" class="input-select">
+        <option value="nul" selected disabled>Choose language</option>
+        <option value="opt1">Spanish</option>
+        <option value="opt2">English</option>
+        <option value="opt3">Chinese</option>
+        <option value="opt4">Nepali</option>
+        </select>
+
+                            
+        <select name="choose" id="choose" class="input-select">
+        <option value="nul" selected disabled>Skill level</option>
+        <option value="opt1">Advance</option>
+        <option value="opt2">Intermediate</option>
+        <option value="opt3">Beginner</option>
+        </select> <br> <br>
+
+    <p3>About me:</p3>
+    <textarea id="id6" rows= "6" cols="50" placeholder="introduce youself"></textarea>
+    
+      <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </div>
+    </form>                                 
+    <p class="text-center" >Already have an Account?<a href="../html/login.html"> Sign in</a></p>
+</div>
+</body>
+</html>                                		                            

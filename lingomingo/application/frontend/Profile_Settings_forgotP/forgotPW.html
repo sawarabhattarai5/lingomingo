@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+     <link href="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+        <div class="row justify-content-center align-items-center" style="height:100vh">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <p>Enter username:</p>
+                        <form action="" autocomplete="off">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="username">
+                            </div>
+                            <p>You will be sent an email to the email associated with your username to reset your password.</p>
+                            <button type="button" id="sendlogin" class="btn btn-primary" data-toggle="modal" data-target="#modalSendEmail">Send Email</button>
+                           <!-- Modal -->
+                            <div id="modalSendEmail" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>You have been sent an email to reset your password.  If you dont receive the email within 60 minutes, please try again.</p>
+                                        </div>
+                                    </div> <!-- Modal content -->
+                                </div> <!-- Modal Pop Up -->
+                            </div> <!-- Modal-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="//unpkg.com/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript"></script>
+</body>
+</html>

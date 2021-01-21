@@ -1,0 +1,175 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+    <link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+    </br>
+    <div class="container mb-5 emp-profile">
+
+        <div class="d-flex justify-content-between mb-3">
+            <h3>Friend Requests</h3>
+            <h3>Your Matches</h3>
+            {# THIS IS THE SORT BY AT TOP RIGHT #}
+            <div>
+                <a class="badge badge-warning" data-toggle="tooltip" title="Add as many users as you want. Once you're friends you can message each other to get started">?</a>
+            </div>
+
+        </div>
+
+        {# ROW WHERE EVERYTHING STARTS #}
+        <div class="row">
+
+
+            {# THIS IS THE UPPER LEFT SIDE OF PAGE WHERE FRIENDS IS AT #}
+            <!-- Friend List================================================= -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="sr-only">Filter</h4>
+                        <small class="text-uppercase text-muted d-block mb-1">Add Friends</small>
+                        {% if not user.profile.incoming_friend_reqeust %}
+                            <ul class="nav nav-pills flex-column mb-3">
+                                {% for p in user.profile.incoming_friend_request.all %}
+                                    <li class="nav-item">
+                                        <a class="nav-link p-1 name1"
+                                           href="{% url 'profile' p.profile_1.uuid %}">{{ p.profile_1.user.first_name }}</a>
+                                    </li>
+                                    <form action="" method="post">
+                                        {% csrf_token %}
+                                        <button class="btn btn-success" type="submit" name="accept_friend_request"
+                                                value="{{ p.profile_1.uuid }}">Accept
+                                        </button>
+                                        <button class="btn btn-danger" type="submit" name="decline_friend_request"
+                                                value="{{ p.profile_1.uuid }}">Decline
+                                        </button>
+                                    </form>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>None</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <small class="text-uppercase text-muted d-block mb-1">Sent</small>
+                        {% if not user.profile.outgoing_friend_reqeust %}
+                            <ul class="nav nav-pills flex-column mb-3">
+                                {% for p in user.profile.outgoing_friend_request.all %}
+                                    <li class="nav-item">
+                                        <strong><a class="nav-link name1"
+                                                   href="{% url 'profile' p.profile_2.uuid %}">{{ p.profile_2.user.first_name }}</a></strong>
+                                        <form action="" method="post">
+                                            {% csrf_token %}
+                                            <button class="btn btn-outline-danger" type="submit"
+                                                    name="cancel_friend_request"
+                                                    value="{{ p.profile_2.uuid }}">Cancel
+                                            </button>
+                                        </form>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>no outgoing friend requests</p>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+
+            {# THIS IS EVERY CARD IN PROFILE LIST #}
+            <div class="col-md-9">
+                <div class="card-columns">
+                    {% for profile in profile_list %}
+                        <div class="card">
+                            <div class="card-body p-2 position-relative">
+                                <div class="d-flex justify-content-center flex-column">
+                                    <div class="name_container">
+                                        <i class="fas fa-{{ profile.profile_icon }}"></i>
+                                        <strong><a class="name"
+                                                   href="{% url 'profile' profile.uuid %}"> {{ profile.user.first_name }}</a></strong>
+                                    </div>
+                                    <div class="address">United States</div>
+                                </div>
+                                <div class="info_container">
+                                    <div class="info">
+                                        <p>Teaching</p>
+                                        <p>{% for lang in profile.primary_language.all %}{{ lang }} {% endfor %}</p>
+                                    </div>
+                                    <div class="info">
+                                        <p>Learning</p>
+                                        <p>{% for lang in profile.learning_language.all %}
+                                            {{ lang }} {% endfor %}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="card-footer">
+                                    <button type="submit" name="add_friend" value="{{ profile.uuid }}"
+                                            class="btn btn-primary float-left w-100">Add Friend
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+    
+
+
+<div class="container mb-5 emp-profile">
+    <div class="col-md-7 col-xl-8">
+        <h1>Find Friends</h1>
+        <form class="form-inline my-2 my-lg-0" method="post">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" placeholder="Search By Name" name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        {% if search_results %}
+            <h5>Results:</h5>
+            <ul>
+                {% for profile in search_results %}
+                    <li>
+                        <a href="{% url 'profile' profile.uuid %}">{{ profile.user.first_name }} {{ profile.user.last_name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

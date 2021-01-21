@@ -1,0 +1,218 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+<!--
+    <link rel="stylesheet" type="text/css" href="{%static 'css/lingomingo.css' %}">
+    <div class="banner">
+        <div class="bg-color">
+            <div class="container">
+                <div class="row">
+                    <div class="banner-text text-center">
+                        <div class="text-border">
+                            <h2 class="text-dec">Welcome to LingoMingo</h2>
+                        </div>
+                        <div class="intro-para text-center quote">
+                            <p class="big-text">Learn & Teach Language </p>
+                            <p class="small-text">It is a platform where you can teach and
+                                learn language.Learn any language of your choice by matching with
+                                people who are fluent in that language. Along with learning a new
+                                language you can teach the language that you are fluent.</p>
+                            <div class="signup">
+                                <a href="{% url 'register' %}"><button class="button">Sign Up</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+ <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{%static 'css/homepage.css' %}" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{%static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{%static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{%static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{%static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{%static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+<body>
+
+<!-- ======= Header ======= -->
+<!--
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+        <div class="logo mr-auto">
+            <h1><a href="{% url 'index' %}">LingoMingo</a></h1>
+        </div>
+
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Sign In</a></li>
+            </ul>
+        </nav> .nav-menu -->
+
+<!--</headerEnd Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container text-center text-md-center" data-aos="fade-up">
+        <h1>Welcome to <span>LingoMingo</span></h1>
+        <h2>We provide a platform to teach and
+                learn languages. Learn any language of your choice by matching with
+                people who are fluent in that language. You can chat with other users to practice you written
+                and verbal communication. If you are fluent in a language, feel free to use your skills to help teach others.
+                </h2>
+        <a href="{% url 'register' %}" class="btn-get-started scrollto">Get Started</a>
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= What We Do Section ======= -->
+    <section id="what-we-do" class="what-we-do">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>What You Can Do</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 d-flexalign-items-stretch">
+                    <div class="icon-box">
+                        <div class="icon"><i class='bx bxs-user'></i></div>
+                        <h4>Match with Users</h4>
+                        <p>Match with other users who share a common language and are fluent in the new language
+                        you want to learn. </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <div class="icon"><i class='bx bxs-book-open' ></i></div>
+                        <h4>Learn a new language from others</h4>
+                        <p>Chat with your matches in the language you would like to learn.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                    <div class="icon-box">
+                        <div class="icon"><i class='bx bxs-user-voice'></i></div>
+                        <h4>Teach a new language</h4>
+                        <p>Chat with your matches and help them practice written and spoken languages. </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End What We Do Section -->
+
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Testimonials</h2>
+                <p>What other users have to say about LingoMingo. </p>
+            </div>
+
+            <div class="owl-carousel testimonials-carousel">
+
+                <div class="testimonial-item">
+                    <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        Met some awesome people on LingoMingo who really helped me. My written Spanish has gotten so much better.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <h3>Mariam Shahab</h3>
+                    <h4>User - Wants to Learn</h4>
+                </div>
+
+                <div class="testimonial-item">
+                    <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        Man, my language skills are getting better and better. This app fits my needs perfectly.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <h3>Ryan Hu</h3>
+                    <h4>User - Wants to Teach</h4>
+                </div>
+
+                <div class="testimonial-item">
+                    <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        I got an A in my language class at school!
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <h3>Sawara Bhattarai</h3>
+                    <h4>User - Wants to Learn</h4>
+                </div>
+
+                <div class="testimonial-item">
+                    <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        I wish I would have thought of it first. I would like to personally thank you for your outstanding product.
+                        I couldn't have asked for more than this. I will recommend you to my friends.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <h3>Arjun Bista</h3>
+                    <h4>User - Wants to Learn</h4>
+                </div>
+
+                <div class="testimonial-item">
+                    <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        LingoMingo is the next killer app. I'd be lost without LingoMingo.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <h3>Dylan Luong</h3>
+                    <h4>User - Wants to Teach</h4>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Testimonials Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+
+    <div class="container d-md-flex py-4">
+
+        <div class="mr-md-auto text-center text-md-left">
+            <div class="copyright">
+                &copy; Copyright <strong><span>LingoMingo</span></strong>. All Rights Reserved
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{%static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{%static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+<script src="{%static 'vendor/php-email-form/validate.js' %}"></script>
+<script src="{%static 'vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+<script src="{%static 'vendor/counterup/counterup.min.js' %}"></script>
+<script src="{%static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{%static 'vendor/venobox/venobox.min.js' %}"></script>
+<script src="{%static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{%static 'js/homepage.js' %}"></script>
+
+</body>
+{% endblock %}

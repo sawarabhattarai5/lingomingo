@@ -1,0 +1,42 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Friends{% endblock %}
+
+{% block content %}
+
+    <h1>Friends</h1>
+
+    <div class="container">
+    <div class="row">
+        <h3>Friend List</h3>
+        {% for friend in friend_list %}
+                <div class="col-sm">
+                    {{ friend.user.first_name }}
+                </div>
+                <div class="col-sm">
+                    Knows:<br/>
+                    {% for lang in friend.primary_language.all %}{{ lang }} {% endfor %}
+                </div>
+                <div class="col-sm">
+                    Learning: <br/>
+                    {% for lang in friend.learning_language.all %}{{ lang }} {% endfor %}
+                </div>
+                <div class="col-sm">
+                    Location: <br/>
+                    <script>
+                        document.write(getCountryName('{{ friend.location.upper }}'));
+                    </script>
+                    <span class="flag-icon flag-icon-{{ friend.location }}"></span>
+                </div>
+                <div class="col-sm">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <button class="btn btn-danger" name="unfriend" value="{{ friend.uuid }}">Unfriend</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
